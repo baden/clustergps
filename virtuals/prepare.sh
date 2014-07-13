@@ -7,7 +7,9 @@ VM='Cluster-virtual'
 SSH_PORT=2222
 #RELEASE="0.1.0"
 
-scp -P 2222 -rp ../_rel/clustergps/ ubuntu@127.1:
+#scp -P 2222 -rp ../_rel/clustergps/ ubuntu@127.1:
+rsync -avz --delete --rsh='ssh -p2222' ../_rel/clustergps/ ubuntu@127.1:~/clustergps
+
 
 exit 0
 
@@ -25,7 +27,7 @@ VBoxManage startvm $VM
 
 echo "Waiting start Virtual Machine"
 
-sleep 10
+sleep 15
 
 echo "Enter password in next phase: reverse"
 
