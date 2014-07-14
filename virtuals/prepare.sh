@@ -2,16 +2,16 @@
 
 # (username/password): ubuntu/reverse
 
-OVA_IMAGE="./ubuntu-14.04-server-i386.ova"
+#OVA_IMAGE="./ubuntu-14.04-server-i386.ova"
+OVA_IMAGE="./ubuntu-14.04-server-amd64.ova"
 VM='Cluster-virtual'
 SSH_PORT=2222
 #RELEASE="0.1.0"
 
-#scp -P 2222 -rp ../_rel/clustergps/ ubuntu@127.1:
-rsync -avz --delete --rsh='ssh -p2222' ../_rel/clustergps/ ubuntu@127.1:~/clustergps
 
-
-exit 0
+if [ ! -f $OVA_IMAGE ]; then
+    echo "Download torrent file https://s3-eu-west-1.amazonaws.com/virtualboxes.org/$OVA_IMAGE.torrent 1st"
+fi
 
 #ssh -p 2222 ubuntu@127.1 mkdir clustergps
 #scp -P 2222 -rp ../_rel/clustergps/ ubuntu@127.1:
